@@ -17,8 +17,8 @@ import EditClient from "./components/clients/EditClient";
 
 
 function App() {
+  console.log(process.env.REACT_APP_BACKEND_URL);
   return (
-
 
       <Fragment>
         <Header />
