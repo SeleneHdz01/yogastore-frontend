@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Fragment}   from "react";
+
+/**Routing */
+import { Routes, Route} from "react-router-dom";
+
+
+/**Layout */
+import Header from "./components/layout/Header";
+import AdminMenu from "./components/layout/AdminMenu";
+
+/**Components */
+import Clients from "./components/clients/Clients";
+import Products from "./components/products/Products";
+import Orders from "./components/orders/Orders";
+import NewClient from "./components/clients/NewClient";
+import EditClient from "./components/clients/EditClient";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+      <Fragment>
+        <Header />
+        <div className="grid contenedor contenido-principal">
+          <AdminMenu />
+          <main className="caja-contenido col-9">
+            
+            {/* Routing to components */}
+            <Routes>
+              <Route path="/" element={<Clients/>}  />
+              <Route path="/clients/newclient" element={<NewClient/>}  />
+              <Route path="/clients/edit/:id" element={<EditClient/>}  />
+              <Route path="/products" element={<Products/>}  />
+              <Route path="/orders" element={<Orders />} /> 
+            </Routes>
+          </main>
+        </div>
+      </Fragment>
+   
+
+    
+  ) 
+  
 }
 
 export default App;
